@@ -1,0 +1,28 @@
+h2 Transaction
+
+ul
+  each transaction in transactions
+    li
+      span Book title: 
+      span= transaction.bookTitle
+      br
+      span Borrower: 
+      span= transaction.userName
+      br
+      span Is complete: 
+      span= transaction.isComplete ? transaction.isComplete : "False"
+      br
+      a(href="/transactions/" + transaction.id +"/complete") Complete
+
+form(method="POST")
+  lable Book title:
+  select(name="bookId")
+    each book in books
+      option(value=book.id)= book.title
+  lable User name:
+  select(name="userId")
+    each user in users
+      option(value=user.id)= user.name
+  br
+  button create
+  
